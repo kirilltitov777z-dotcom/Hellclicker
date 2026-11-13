@@ -6,4 +6,3 @@ desktop/web/
 .DS_Store
 server/data.json
 server/.data/
-package-lock.json
