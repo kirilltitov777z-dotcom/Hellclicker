@@ -1,0 +1,16 @@
+{
+  "name": "Hellclicker",
+  "version": "1.0.0",
+  "description": "Idle clicker about hell. Tap demons, kill, prestige, Halloween in Hell.",
+  "main": "web/index.html",
+  "scripts": {
+    "start": "npx cap serve android",
+    "android": "npx cap run android",
+    "build": "npx cap build android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/cli": "^8.6.2",
+    "@capacitor/core": "^8.6.2"
+  }
+}

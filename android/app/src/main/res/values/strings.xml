@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Hellclicker</string>
+    <string name="title_activity_main">Hellclicker</string>
+    <string name="package_name">com.kirilltitov777zdotcom.hellclicker</string>
+    <string name="custom_url_scheme">com.kirilltitov777zdotcom.hellclicker</string>
+</resources>
