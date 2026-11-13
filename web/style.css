@@ -1,0 +1,116 @@
+[hidden] { display: none !important; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: radial-gradient(ellipse at top, #2a0a4a 0%, #12041f 60%, #0b0518 100%);
+  color: #f3ecff;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#game {
+  height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: rgba(11, 5, 24, 0.6);
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(10px + env(safe-area-inset-top)) 16px 10px;
+  background: rgba(20, 6, 38, 0.92);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.35);
+}
+
+.hud-item { display: flex; flex-direction: column; align-items: center; min-width: 64px; }
+.hud-item + .hud-item { border-left: 1px solid rgba(139, 92, 246, 0.25); padding-left: 12px; }
+.hud-emoji { font-size: 18px; }
+#gold { font-size: 20px; font-weight: 800; color: #ffd166; }
+#souls { font-size: 20px; font-weight: 800; color: #c084fc; }
+#hero-level { font-size: 20px; font-weight: 800; color: #7dd3fc; }
+.hud-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; }
+
+#event-banner {
+  background: linear-gradient(90deg, #7f1d1d, #b91c1c, #7f1d1d);
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#battle { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+#hero-zone { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding: 12px 16px 8px; }
+#hero { font-size: 92px; line-height: 1; animation: heroBob 2.4s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(139, 92, 246, 0.55)); }
+@keyframes heroBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.bar { width: 78%; height: 12px; background: rgba(0, 0, 0, 0.55); border-radius: 6px; overflow: hidden; margin: 6px 0; border: 1px solid rgba(139, 92, 246, 0.4); }
+.bar i { display: block; height: 100%; background: linear-gradient(90deg, #a78bfa, #7c3aed); border-radius: 6px; transition: width 0.2s ease; }
+.bar.hp-bar i { background: linear-gradient(90deg, #f87171, #b91c1c); }
+#hp-fill { width: 100%; }
+#xp-fill { width: 0%; background: linear-gradient(90deg, #fbbf24, #f97316); }
+
+#hero-info { font-size: 14px; font-weight: 700; opacity: 0.95; }
+
+#prestige { margin-top: 8px; text-align: center; background: rgba(40, 8, 66, 0.8); border: 1px solid rgba(192, 132, 252, 0.5); border-radius: 12px; padding: 10px; }
+#prestige p { font-size: 13px; margin-bottom: 6px; }
+#prestige button { margin-top: 4px; font-family: inherit; font-weight: 800; font-size: 16px; color: #1a0b2e; background: linear-gradient(90deg, #e9d5ff, #c084fc); border: none; border-radius: 10px; padding: 12px 22px; cursor: pointer; }
+
+#demons { flex: 1; overflow-y: auto; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
+.demons-empty { text-align: center; opacity: 0.7; padding: 30px 0; font-size: 15px; }
+
+.demon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(30, 8, 54, 0.85);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
+  animation: demonPop 0.25s ease;
+  position: relative;
+}
+@keyframes demonPop { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.float-text { position: absolute; left: 70px; top: 6px; font-weight: 800; color: #fff; text-shadow: 0 2px 6px #000; font-size: 17px; pointer-events: none; animation: floatUp 0.8s ease forwards; }
+@keyframes floatUp { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-26px); } }
+.demon-emoji { font-size: 44px; }
+.demon-name { font-size: 13px; font-weight: 700; opacity: 0.9; display: block; }
+.demon-hp { flex: 1; height: 8px; background: rgba(0, 0, 0, 0.55); border-radius: 4px; overflow: hidden; }
+.demon-hp i { display: block; height: 100%; background: linear-gradient(90deg, #f87171, #dc2626); }
+.demon-dmg { font-size: 12px; font-weight: 800; opacity: 0.85; min-width: 44px; text-align: right; }
+.demon.dead { opacity: 0.35; }
+
+#shop, #achievements { flex: 1; overflow-y: auto; padding: 16px; }
+#shop h2, #achievements h2 { font-size: 20px; margin-bottom: 12px; color: #c084fc; }
+.upgrade { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(30, 8, 54, 0.85); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+.upgrade.maxed { opacity: 0.6; }
+.upgrade-info { display: flex; flex-direction: column; }
+.upgrade-info b { font-size: 15px; }
+.upgrade-info span { font-size: 12px; opacity: 0.8; }
+.buy { font-family: inherit; font-weight: 800; font-size: 14px; color: #1a0b2e; background: linear-gradient(90deg, #e9d5ff, #c084fc); border: none; border-radius: 10px; padding: 10px 12px; cursor: pointer; white-space: nowrap; }
+.buy:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.ach { background: rgba(30, 8, 54, 0.85); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 12px; margin-bottom: 8px; opacity: 0.45; }
+.ach.unlocked { opacity: 1; border-color: rgba(251, 191, 36, 0.6); }
+.ach b { font-size: 14px; display: block; }
+.ach span { font-size: 12px; opacity: 0.85; }
+
+#tabs { display: flex; border-top: 1px solid rgba(139, 92, 246, 0.35); background: rgba(20, 6, 38, 0.95); flex-shrink: 0; }
+.tab { flex: 1; font-family: inherit; font-size: 14px; font-weight: 700; background: none; border: none; color: #c4b5fd; padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); cursor: pointer; opacity: 0.6; }
+.tab.active { opacity: 1; color: #f3e8ff; background: rgba(139, 92, 246, 0.15); }
+
+#toast { position: fixed; top: 70px; left: 50%; transform: translateX(-50%) translateY(-20px); background: rgba(20, 6, 38, 0.95); border: 1px solid rgba(251, 191, 36, 0.7); color: #fde68a; padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; opacity: 0; transition: all 0.25s ease; pointer-events: none; z-index: 50; max-width: 90%; text-align: center; }
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
