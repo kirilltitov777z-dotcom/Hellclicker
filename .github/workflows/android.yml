@@ -35,9 +35,17 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease
 
+      - name: Sign APK
+        run: |
+          export ANDROID_HOME=$HOME/android-sdk
+          export ANDROID_SDK_ROOT=$HOME/android-sdk
+          keytool -genkey -v -keystore release.keystore -alias hellclicker -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Hellclicker, O=Hellclicker" -storepass android -keypass android
+          cd android
+          $ANDROID_HOME/build-tools/34.0.0/apksigner sign --ks ../release.keystore --ks-key-alias hellclicker --ks-pass pass:android --key-pass pass:android --out app/build/outputs/apk/release/app-release-signed.apk app/build/outputs/apk/release/app-release-unsigned.apk
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Hellclicker-release
-          path: android/app/build/outputs/apk/release/*.apk
+          path: android/app/build/outputs/apk/release/app-release-signed.apk
           if-no-files-found: error

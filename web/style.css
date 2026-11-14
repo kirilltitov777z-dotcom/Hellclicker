@@ -50,7 +50,7 @@ body {
 
 #battle { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 #hero-zone { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding: 12px 16px 8px; }
-#hero { font-size: 92px; line-height: 1; animation: heroBob 2.4s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(139, 92, 246, 0.55)); }
+#hero-img { width: 92px; height: 92px; animation: heroBob 2.4s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(139, 92, 246, 0.55)); object-fit: contain; }
 @keyframes heroBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
 .bar { width: 78%; height: 12px; background: rgba(0, 0, 0, 0.55); border-radius: 6px; overflow: hidden; margin: 6px 0; border: 1px solid rgba(139, 92, 246, 0.4); }
@@ -86,7 +86,7 @@ body {
 @keyframes demonPop { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .float-text { position: absolute; left: 70px; top: 6px; font-weight: 800; color: #fff; text-shadow: 0 2px 6px #000; font-size: 17px; pointer-events: none; animation: floatUp 0.8s ease forwards; }
 @keyframes floatUp { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-26px); } }
-.demon-emoji { font-size: 44px; }
+.demon-img { width: 56px; height: 56px; object-fit: contain; flex-shrink: 0; }
 .demon-name { font-size: 13px; font-weight: 700; opacity: 0.9; display: block; }
 .demon-hp { flex: 1; height: 8px; background: rgba(0, 0, 0, 0.55); border-radius: 4px; overflow: hidden; }
 .demon-hp i { display: block; height: 100%; background: linear-gradient(90deg, #f87171, #dc2626); }

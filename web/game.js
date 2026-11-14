@@ -10,10 +10,10 @@
   var EVENT_END = new Date(2026, 10, 5).getTime();
 
   var MONSTERS = [
-    { id: 'skeleton', emoji: '\u2665', name: 'Скелет', hp: 18, dmg: 2, xp: 6, gold: 5 },
-    { id: 'devil', emoji: '\uD83D\uDE0C', name: 'Чёрт', hp: 32, dmg: 4, xp: 9, gold: 8 },
-    { id: 'hound', emoji: '\uD83D\uDC38', name: 'Адский Пёс', hp: 48, dmg: 6, xp: 12, gold: 11, elite: true },
-    { id: 'ghost', emoji: '\uD83D\uDC6B', name: 'Призрак', hp: 58, dmg: 8, xp: 15, gold: 14, elite: true }
+    { id: 'skeleton', img: 'img/skeleton.png', name: 'Скелет', hp: 18, dmg: 2, xp: 6, gold: 5 },
+    { id: 'devil', img: 'img/demon.png', name: 'Чёрт', hp: 32, dmg: 4, xp: 9, gold: 8 },
+    { id: 'hound', img: 'img/demon.png', name: 'Адский Пёс', hp: 48, dmg: 6, xp: 12, gold: 11, elite: true },
+    { id: 'ghost', img: 'img/demon.png', name: 'Призрак', hp: 58, dmg: 8, xp: 15, gold: 14, elite: true }
   ];
 
   var state = null;
@@ -126,9 +126,9 @@
     if (state.demons.length >= demonCap()) return;
     var m = MONSTERS[Math.floor(Math.random() * MONSTERS.length)];
     if (eventActive() && Math.random() < 0.15) {
-      m = { id: 'halloween', emoji: '\u{1F383}', name: 'Хэллоуинский Демон', hp: 90, dmg: 12, xp: 40, gold: 60, elite: true };
+      m = { id: 'halloween', img: 'img/pumpkin.png', name: 'Хэллоуинский Демон', hp: 90, dmg: 12, xp: 40, gold: 60, elite: true };
     }
-    state.demons.push({ id: state.demonId++, emoji: m.emoji, name: m.name, hp: m.hp, maxHp: m.hp, dmg: m.dmg, xp: m.xp, gold: m.gold, elite: !!m.elite });
+    state.demons.push({ id: state.demonId++, img: m.img, name: m.name, hp: m.hp, maxHp: m.hp, dmg: m.dmg, xp: m.xp, gold: m.gold, elite: !!m.elite });
     render();
   }
 
@@ -208,7 +208,7 @@
     var pct = Math.max(0, Math.round((d.hp / d.maxHp) * 100));
     var dead = d.hp <= 0;
     return '<button class="demon' + (dead ? ' dead' : '') + '" data-id="' + d.id + '">' +
-      '<span class="demon-emoji">' + d.emoji + '</span>' +
+      '<img class="demon-img" src="' + d.img + '" alt="' + d.name + '">' +
       '<span class="demon-name">' + d.name + (d.elite ? '\u{1F451}' : '') + '</span>' +
       '<span class="demon-hp"><i style="width:' + pct + '%"></i></span>' +
       '<span class="demon-dmg">' + Math.ceil(d.hp) + '/' + d.maxHp + '</span>' +
