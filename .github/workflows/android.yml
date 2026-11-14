@@ -29,9 +29,9 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
         with:
-          api-level: 34
-          build-tools: 34.0.0
-          target: android-34
+          api-level: 35
+          build-tools: 35.0.0
+          target: android-35
 
       - name: Sync Capacitor Android
         run: npx cap sync android
